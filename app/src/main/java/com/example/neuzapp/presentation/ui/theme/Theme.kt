@@ -1,4 +1,4 @@
-package com.example.neuzapp.ui.theme
+package com.example.neuzapp.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -40,7 +40,7 @@ private val LightColorScheme = lightColorScheme(
 fun NeuzAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -56,7 +56,7 @@ fun NeuzAppTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = colorScheme.primaryContainer.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }

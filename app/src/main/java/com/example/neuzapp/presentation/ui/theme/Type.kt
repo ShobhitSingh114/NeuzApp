@@ -1,4 +1,4 @@
-package com.example.neuzapp.ui.theme
+package com.example.neuzapp.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
