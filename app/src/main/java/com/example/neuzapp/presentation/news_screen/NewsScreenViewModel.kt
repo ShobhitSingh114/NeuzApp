@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.neuzapp.domain.use_case.GetTopHeadlineNews
+import com.example.neuzapp.presentation.NewsScreenEvent
 import com.example.neuzapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -19,12 +20,23 @@ class NewsScreenViewModel @Inject constructor(
     private val _state = mutableStateOf(NewsScreenState())
     val state: State<NewsScreenState> = _state
 
+    fun onEvent(event: NewsScreenEvent) {
+        when(event) {
+            is NewsScreenEvent.onCategoryChanged -> TODO()
+            NewsScreenEvent.onClosedIconClicked -> TODO()
+            is NewsScreenEvent.onNewsCardClicked -> TODO()
+            NewsScreenEvent.onSearchIconClicked -> TODO()
+            is NewsScreenEvent.onSearchQueryChanged -> TODO()
+        }
+    }
+
     init {
         // category kaise melegi
         getNews(category = "general")
     }
 
-    private fun getNews(category: String) {
+//    private fun getNews(category: String) {
+    fun getNews(category: String) {
         getTopHeadlineNews(category).onEach {
             when(it) {
                 is Resource.Success -> {
