@@ -66,11 +66,11 @@ fun NewsCard(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = article.source.name!!,
+                    text = article.source.name ?: "",
                     style = MaterialTheme.typography.bodySmall
                 )
                 Text(
-                    text = article.publishedAt!!,
+                    text = article.publishedAt ?: "",
                     style = MaterialTheme.typography.bodySmall
                 )
             }

@@ -21,7 +21,7 @@ fun NewsScreenTopBar(
 ) {
     TopAppBar(
         scrollBehavior = scrollBehavior,
-        title = { Text(text = "Newsroom", fontWeight = FontWeight.Bold)},
+        title = { Text(text = "\uD83D\uDCF0 NeuzApp \uD83D\uDDDE", fontWeight = FontWeight.Bold)},
         actions = {
             IconButton(onClick = onSearchIconClicked) {
                 Icon(imageVector = Icons.Default.Search, contentDescription = "Search")

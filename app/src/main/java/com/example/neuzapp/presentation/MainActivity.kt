@@ -9,7 +9,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.neuzapp.presentation.news_screen.NewsScreen
+import com.example.neuzapp.presentation.news_screen.NewsScreenViewModel
 import com.example.neuzapp.presentation.ui.theme.NeuzAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,6 +26,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+//                    val viewmodel: NewsScreenViewModel = hiltViewModel()
+//                    NewsScreen(
+//                        state = viewmodel.state.value,
+//                        onEvent = viewmodel::onEvent
+//                    )
                     NewsScreen()
                 }
             }
@@ -33,10 +40,10 @@ class MainActivity : ComponentActivity() {
 
 
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NeuzAppTheme {
-        NewsScreen()
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun GreetingPreview() {
+//    NeuzAppTheme {
+//        NewsScreen()
+//    }
+//}
