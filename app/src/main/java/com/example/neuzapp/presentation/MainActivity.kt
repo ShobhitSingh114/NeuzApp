@@ -10,9 +10,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import com.example.neuzapp.presentation.news_screen.NewsScreen
 import com.example.neuzapp.presentation.news_screen.NewsScreenViewModel
 import com.example.neuzapp.presentation.ui.theme.NeuzAppTheme
+import com.example.neuzapp.util.NavGraphSetup
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +34,8 @@ class MainActivity : ComponentActivity() {
 //                        state = viewmodel.state.value,
 //                        onEvent = viewmodel::onEvent
 //                    )
-                    NewsScreen()
+                    val navController = rememberNavController()
+                    NavGraphSetup(navController = navController)
                 }
             }
         }

@@ -19,4 +19,10 @@ interface NewsApi {
         @Query("country") country: String = "in",
         @Query("apiKey") apiKey: String = Constants.API_KEY
     ): NewsDto
+
+    @GET("everything")
+    suspend fun searchForNews(
+        @Query("q") query: String,
+        @Query("apiKey") apiKey: String = Constants.API_KEY
+    ): NewsDto
 }

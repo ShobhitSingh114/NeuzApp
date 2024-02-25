@@ -12,4 +12,8 @@ class NewsRepositoryImpl @Inject constructor(
     override suspend fun getTopNewsHeadlines(category: String): NewsDto {
         return api.getTopNewsHeadlines(category)
     }
+
+    override suspend fun searchForNews(query: String): NewsDto {
+        return api.searchForNews(query)
+    }
 }

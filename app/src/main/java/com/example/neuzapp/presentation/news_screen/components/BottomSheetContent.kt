@@ -15,10 +15,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.example.neuzapp.R
 import com.example.neuzapp.data.remote.dto.Article
 
 @Composable
@@ -40,13 +42,7 @@ fun BottomSheetContent(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                .data(article.urlToImage ?: "")
-                .crossfade(true)
-                .build(),
-                contentDescription = "Image"
-            )
+            ImageHolder(imageUrl = article.urlToImage)
 
             Spacer(modifier = Modifier.height(8.dp))
 

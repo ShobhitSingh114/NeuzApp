@@ -12,6 +12,7 @@ sealed class NewsScreenEvent() {
     data class onSearchQueryChanged(val searchQuery: String): NewsScreenEvent()
     data object onSearchIconClicked: NewsScreenEvent()
     data object onClosedIconClicked: NewsScreenEvent()
+
 }
 
 // In a nutshell
