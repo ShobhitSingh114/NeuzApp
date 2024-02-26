@@ -71,12 +71,14 @@ class NewsScreenViewModel @Inject constructor(
 
 
                 _state.value = _state.value.copy(searchQuery = event.searchQuery)
+//                searchForNews(event.searchQuery)
+
                 searchJob?.cancel()
                 searchJob = viewModelScope.launch {
                     delay(1000)
                     searchForNews(_state.value.searchQuery)
+//                    searchForNews(event.searchQuery)
                 }
-
 
             }
 
@@ -113,7 +115,8 @@ class NewsScreenViewModel @Inject constructor(
         searchForNewsUseCase(query).onEach {
             when(it) {
                 is Resource.Success -> {
-                    _state.value = NewsScreenState(news = it.data)
+//                    _state.value = NewsScreenState(news = it.data)
+                    _state.value = _state.value.copy(news = it.data, isSearchBarVisible = true, searchQuery = query)
 //                    _state.value = _state.value.copy(news = it.data)
                 }
                 is Resource.Error -> {

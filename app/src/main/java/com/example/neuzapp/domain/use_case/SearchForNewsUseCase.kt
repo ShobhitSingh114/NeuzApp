@@ -16,8 +16,8 @@ class SearchForNewsUseCase @Inject constructor(
     operator fun invoke(query: String): Flow<Resource<News>> = flow {
         try {
             emit(Resource.Loading())
-            val query = repository.searchForNews(query = query).toNews()
-            emit(Resource.Success(data = query))
+            val news = repository.searchForNews(query = query).toNews()
+            emit(Resource.Success(data = news))
         }
         catch (e: HttpException) {
             emit(

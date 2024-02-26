@@ -107,6 +107,8 @@ fun NewsScreen(
     val focusManager = LocalFocusManager.current
     val keyboardController = LocalSoftwareKeyboardController.current
 
+//    var searchQuery by remember { mutableStateOf("") }
+
     if (isSheetOpen) {
         ModalBottomSheet(
             sheetState = sheetState,
@@ -137,9 +139,10 @@ fun NewsScreen(
 
     Column(modifier = Modifier.fillMaxSize()) {
         // Crossfade = allows to switch between two composable layouts with a crossfade animation
-        Crossfade(targetState = state.isSearchBarVisible, label = "") { isVisible ->
+        Crossfade(targetState = state.isSearchBarVisible, label = "") {
+            // isVisible ->
             // if searchbar show ho rha hai then show searchAppBar and NewsItemList
-            if (isVisible) {
+            if (it) {
                 Column {
                     SearchAppBar(
                         // we need to focus in SearchAppBar textField
@@ -148,14 +151,14 @@ fun NewsScreen(
                         modifier = Modifier.focusRequester(focusRequester),
                         // updated user search query
                         value = state.searchQuery,
-                        onInputValueChange = { query ->
-                            /**
-                             * issue here solve it
-                              */
-//                            onEvent(NewsScreenEvent.onSearchQueryChanged(query))
+//                        value = searchQuery,
+                        onInputValueChange = { newValue ->
+                            onEvent(NewsScreenEvent.onSearchQueryChanged(newValue))
+//                            searchQuery = query
                         },
                         onClosedIconClicked = { onEvent(NewsScreenEvent.onClosedIconClicked) },
                         onSearchedIconClicked = {
+//                            onEvent(NewsScreenEvent.onSearchQueryChanged(searchQuery))
                             // when user click on searchIcon(search ime action) on keyboard then
                             // 1.keyboard disappear and 2.focus should remove form the SearchAppBar TextField
                             keyboardController?.hide()
@@ -170,7 +173,8 @@ fun NewsScreen(
                             onEvent(NewsScreenEvent.onNewsCardClicked(article))
                         },
                         onRetry = {
-                            NewsScreenEvent.onCategoryChanged(state.category)
+                            onEvent(NewsScreenEvent.onCategoryChanged(state.category))
+//                            onEvent(NewsScreenEvent.onSearchQueryChanged(state.searchQuery))
                         }
                     )
 
@@ -237,7 +241,7 @@ fun NewsScreen(
                                         onEvent(NewsScreenEvent.onNewsCardClicked(article))
                                     },
                                     onRetry = {
-                                        NewsScreenEvent.onCategoryChanged(state.category)
+                                        onEvent(NewsScreenEvent.onCategoryChanged(state.category))
                                     }
                                 )
                             }
