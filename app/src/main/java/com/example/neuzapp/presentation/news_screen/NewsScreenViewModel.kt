@@ -117,7 +117,6 @@ class NewsScreenViewModel @Inject constructor(
                 is Resource.Success -> {
 //                    _state.value = NewsScreenState(news = it.data)
                     _state.value = _state.value.copy(news = it.data, isSearchBarVisible = true, searchQuery = query)
-//                    _state.value = _state.value.copy(news = it.data)
                 }
                 is Resource.Error -> {
                     _state.value = NewsScreenState(error = it.message ?: "An Unexpected error occurred")

@@ -95,6 +95,12 @@ fun NewsScreen(
             onEvent(NewsScreenEvent.onCategoryChanged(category = categories[it]))
         }
     }
+    
+    LaunchedEffect(key1 = Unit) {
+        if (state.searchQuery.isNotEmpty()) {
+            onEvent(NewsScreenEvent.onSearchQueryChanged(searchQuery = state.searchQuery))
+        }
+    }
 
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
     var isSheetOpen by remember {
