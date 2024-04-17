@@ -76,7 +76,8 @@ class NewsScreenViewModel @Inject constructor(
                 searchJob?.cancel()
                 searchJob = viewModelScope.launch {
                     delay(1000)
-                    searchForNews(_state.value.searchQuery)
+//                    searchForNews(query = _state.value.searchQuery)
+                    searchForNews(query = state.value.searchQuery)
 //                    searchForNews(event.searchQuery)
                 }
 
@@ -86,10 +87,10 @@ class NewsScreenViewModel @Inject constructor(
 
     }
 
-    init {
-        // category kaise melegi
-        getNews(category = "general")
-    }
+//    init {
+//        // category kaise melegi
+//        getNews(category = "general")
+//    }
 
 //    private fun getNews(category: String) {
     private fun getNews(category: String) {
